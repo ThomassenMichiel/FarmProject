@@ -84,7 +84,7 @@ public class Farm {
         storage[count] = new Storage();
     }
 
-    private void sellMilkWholeSale() {
+    public void sellMilkWholeSale() {
         Storage storage = getStorage()[getCurrentStorage()];
         funds += storage.getCurrentCapacity() / 100 * MILK_PRICE_100_LITER;
         storage.emptyStorage();
