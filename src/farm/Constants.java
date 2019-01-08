@@ -19,5 +19,5 @@ public class Constants {
     public static final float RANDOM_SALE_PROBABILITY = 0.66f;
     public static final int MAX_AMOUNT_OF_PEOPLE = 12;
 
-    public static final int DURATION_IN_DAYS = 365;
+    public static final int DURATION_IN_DAYS = (365*50);
 }

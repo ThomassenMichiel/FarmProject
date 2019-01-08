@@ -10,6 +10,7 @@ public class Farm {
     private Storage[] storage;
     private int currentStorage;
     private float funds;
+    private Cost costs;
 
     public Farm() {
         this(null, null);
@@ -51,6 +52,14 @@ public class Farm {
 
     public void setFunds(float funds) {
         this.funds = funds;
+    }
+
+    public Cost getCosts() {
+        return costs;
+    }
+
+    public void setCosts(Cost costs) {
+        this.costs = costs;
     }
 
     public void milkCows() {
@@ -98,4 +107,27 @@ public class Farm {
             this.setFunds(getFunds() + toBuy * MILK_PRICE_1_LITER);
         }
     }
+
+    public void generateCows() {
+        for (int i = 0; i < stable.length; i++) {
+            if (stable[i].getGender().equals("female")) {
+                if (Cow.canGetKalf()) {
+                    int oldestPosition = 0;
+                    int oldestAge = 0;
+                    for (int j = 0; j < stable.length; j++) {
+                        if (stable[j].getAge() > oldestAge) {
+                            oldestAge = stable[j].getAge();
+                            oldestPosition = j;
+                        }
+                    }
+                    Cow betsy = new Cow();
+                    betsy.setAge(0);
+                    betsy.setGender(new Random().nextInt(10) > 8 ? "male" : "female");
+                    stable[oldestPosition] = betsy;
+                }
+            }
+        }
+    }
+
+
 }
